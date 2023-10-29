@@ -24,4 +24,9 @@
       <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Remove="app.db-shm" />
+      <None Remove="app.db-wal" />
+    </ItemGroup>
+
 </Project>
