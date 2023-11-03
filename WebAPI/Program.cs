@@ -1,5 +1,4 @@
 using System.Security.Claims;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using WebAPI.Persistence;
 
@@ -8,13 +7,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddAuthentication()
-       .AddBearerToken(IdentityConstants.BearerScheme);
-builder.Services.AddAuthorizationBuilder();
+builder.Services.AddAuthorization();
 
-builder.Services.AddIdentityCore<MyUser>()
-       .AddEntityFrameworkStores<ApplicationContext>()
-       .AddApiEndpoints();
+builder.Services.AddIdentityApiEndpoints<MyUser>()
+       .AddEntityFrameworkStores<ApplicationContext>();
 
 builder.Services
        .AddDbContext<ApplicationContext>(context => context.UseSqlite("DataSource=app.db"));
@@ -34,6 +30,6 @@ app.MapGet("/Fake/AuthenticatedWithClaims",
 app.MapGet("/Fake/NoAuthenticated", () => "Hello World!");
 app.MapGet("/Fake/Anonymous", () => "Hello World!").AllowAnonymous();
 
-app.MapIdentityApi<MyUser>();
+app.MapGroup("account/").MapIdentityApi<MyUser>();
 
 app.Run();
