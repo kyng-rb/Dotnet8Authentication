@@ -14,6 +14,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <PackageReference Include="Carter" Version="7.2.0" />
       <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.0-rc.2.23480.2" />
       <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.0-rc.2.23480.1">
         <PrivateAssets>all</PrivateAssets>
@@ -22,11 +23,6 @@
       <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.0-rc.2.23480.1" />
       <PackageReference Include="Microsoft.OpenApi" Version="1.6.9" />
       <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <None Remove="app.db-shm" />
-      <None Remove="app.db-wal" />
     </ItemGroup>
 
 </Project>
