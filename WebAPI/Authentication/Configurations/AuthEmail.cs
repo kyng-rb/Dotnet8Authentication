@@ -1,6 +1,6 @@
-namespace WebAPI.Authentication;
+namespace WebAPI.Authentication.Configurations;
 
-public class SecurityEmail
+public class AuthEmail
 {
     public required string Address { get; set; }
     public required string Host { get; set; }

@@ -2,15 +2,16 @@ using System.Net;
 using System.Net.Mail;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.Extensions.Options;
+using WebAPI.Authentication.Configurations;
 
-namespace WebAPI.Authentication;
+namespace WebAPI.Authentication.Email;
 
 public class CustomEmailSender : IEmailSender
 {
     private readonly SmtpClient _smtpClient;
-    private readonly SecurityEmail _configurations;
+    private readonly AuthEmail _configurations;
     
-    public CustomEmailSender(IOptions<SecurityConfigurations> options)
+    public CustomEmailSender(IOptions<AuthConfigurations> options)
     {
         _configurations = options.Value.Email;
         _smtpClient = new()
